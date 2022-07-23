@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/objectType.xsd">
+    <import>
+        <!-- Visit Tracker -->
+        <type>
+            <name>design.darkwood.community.topic</name>
+            <definitionname>com.woltlab.wcf.visitTracker.objectType</definitionname>
+        </type>
+        <!-- /Visit Tracker -->
+
+        <!-- Category -->
+		<type>
+			<name>design.darkwood.community.topic.category</name>
+			<definitionname>com.woltlab.wcf.category</definitionname>
+			<classname>community\system\category\TopicCategoryType</classname>
+		</type>
+		<!-- /Category -->
+		
+		<!-- ACL -->
+		<type>
+			<name>design.darkwood.community.topic.category</name>
+			<definitionname>com.woltlab.wcf.acl</definitionname>
+		</type>
+		<!-- /ACL -->
+
+        <!-- message -->
+		<type>
+			<name>design.darkwood.community.topic</name>
+			<definitionname>com.woltlab.wcf.message</definitionname>
+		</type>
+
+        <!-- Like -->
+		<type>
+			<name>design.darkwood.community.likeableTopic</name>
+			<definitionname>com.woltlab.wcf.like.likeableObject</definitionname>
+			<classname>community\data\topic\LikeableTopicProvider</classname>
+		</type>
+
+        <type>
+			<name>design.darkwood.community.likeableTopic.notification</name>
+			<definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+			<classname>wcf\system\user\notification\object\type\LikeUserNotificationObjectType</classname>
+			<category>design.darkwood.community</category>
+		</type>
+		<type>
+			<name>design.darkwood.community.topicComment.like.notification</name>
+			<definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+			<classname>wcf\system\user\notification\object\type\LikeUserNotificationObjectType</classname>
+			<category>design.darkwood.community</category>
+		</type>
+		<type>
+			<name>design.darkwood.community.topicComment.response.like.notification</name>
+			<definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+			<classname>wcf\system\user\notification\object\type\LikeUserNotificationObjectType</classname>
+			<category>design.darkwood.community</category>
+		</type>
+
+        <!-- comments -->
+		<type>
+			<name>design.darkwood.community.topicComment</name>
+			<definitionname>com.woltlab.wcf.comment.commentableContent</definitionname>
+			<classname>community\system\comment\manager\TopicCommentManager</classname>
+		</type>
+		<!-- Activity Points -->
+		<type>
+			<name>design.darkwood.community.activityPointEvent.topic</name>
+			<definitionname>com.woltlab.wcf.user.activityPointEvent</definitionname>
+			<points>1</points>
+		</type>
+
+        <!-- Recent Activity -->
+		<type>
+			<name>design.darkwood.community.recentActivityEvent.topic</name>
+			<definitionname>com.woltlab.wcf.user.recentActivityEvent</definitionname>
+			<classname>community\system\user\activity\event\TopicUserActivityEvent</classname>
+		</type>
+		<type>
+			<name>design.darkwood.community.likeableTopic.recentActivityEvent</name>
+			<definitionname>com.woltlab.wcf.user.recentActivityEvent</definitionname>
+			<classname>community\system\user\activity\event\LikeableTopicUserActivityEvent</classname>
+		</type>
+		<type>
+			<name>design.darkwood.community.topicComment.recentActivityEvent</name>
+			<definitionname>com.woltlab.wcf.user.recentActivityEvent</definitionname>
+			<classname>community\system\user\activity\event\TopicCommentUserActivityEvent</classname>
+		</type>
+		<type>
+			<name>design.darkwood.community.topicComment.response.recentActivityEvent</name>
+			<definitionname>com.woltlab.wcf.user.recentActivityEvent</definitionname>
+			<classname>community\system\user\activity\event\TopicCommentResponseUserActivityEvent</classname>
+		</type>
+
+        <!-- Notifications -->
+		<type>
+			<name>design.darkwood.community.topic</name>
+			<definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+			<classname>community\system\user\notification\object\type\TopicUserNotificationObjectType</classname>
+			<category>design.darkwood.community</category>
+		</type>
+		<type>
+			<name>design.darkwood.community.topicComment.notification</name>
+			<definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+			<classname>community\system\user\notification\object\type\TopicCommentUserNotificationObjectType</classname>
+			<category>design.darkwood.community</category>
+		</type>
+		<type>
+			<name>design.darkwood.community.topicComment.response.notification</name>
+			<definitionname>com.woltlab.wcf.notification.objectType</definitionname>
+			<classname>community\system\user\notification\object\type\TopicCommentResponseUserNotificationObjectType</classname>
+			<category>design.darkwood.community</category>
+		</type>
+	</import>
+</data>

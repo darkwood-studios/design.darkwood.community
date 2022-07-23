@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/userNotificationEvent.xsd">
+    <import>
+
+        <event>
+            <name>topic</name>
+            <objecttype>design.darkwood.community.topic</objecttype>
+            <classname>community\system\user\notification\event\TopicUserNotificationEvent</classname>
+            <preset>1</preset>
+        </event>
+        <event>
+			<name>mention</name>
+			<objecttype>design.darkwood.community.topic</objecttype>
+			<classname>community\system\user\notification\event\TopicMentionUserNotificationEvent</classname>
+			<preset>1</preset>
+		</event>
+		
+		<event>
+			<name>comment</name>
+			<objecttype>design.darkwood.community.topicComment.notification</objecttype>
+			<classname>community\system\user\notification\event\TopicCommentUserNotificationEvent</classname>
+			<preset>1</preset>
+		</event>
+		<event>
+			<name>commentResponse</name>
+			<objecttype>design.darkwood.community.topicComment.response.notification</objecttype>
+			<classname>community\system\user\notification\event\TopicCommentResponseUserNotificationEvent</classname>
+			<preset>1</preset>
+		</event>
+		<event>
+			<name>commentResponseOwner</name>
+			<objecttype>design.darkwood.community.topicComment.response.notification</objecttype>
+			<classname>community\system\user\notification\event\TopicCommentResponseOwnerUserNotificationEvent</classname>
+			<preset>1</preset>
+		</event>
+		
+		<event>
+			<name>like</name>
+			<objecttype>design.darkwood.community.likeableTopic.notification</objecttype>
+			<classname>community\system\user\notification\event\TopicLikeUserNotificationEvent</classname>
+			<preset>1</preset>
+		</event>
+		<event>
+			<name>like</name>
+			<objecttype>design.darkwood.community.topicComment.like.notification</objecttype>
+			<classname>community\system\user\notification\event\TopicCommentLikeUserNotificationEvent</classname>
+			<preset>1</preset>
+		</event>
+		<event>
+			<name>like</name>
+			<objecttype>design.darkwood.community.topicComment.response.like.notification</objecttype>
+			<classname>community\system\user\notification\event\TopicCommentResponseLikeUserNotificationEvent</classname>
+			<preset>1</preset>
+		</event>
+	</import>
+</data>

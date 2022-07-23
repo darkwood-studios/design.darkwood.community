@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/userGroupOption.xsd">
+
+    <import>
+        <!-- categories -->
+        <categories>
+            <category name="user.community">
+                <parent>user</parent>
+            </category>
+            <category name="mod.community">
+                <parent>mod</parent>
+            </category>
+            <category name="admin.community">
+				<parent>admin</parent>
+			</category>
+		</categories>
+		
+		<!-- options -->
+		<options>
+			<!-- user -->
+			<option name="user.community.canViewCommunity">
+				<categoryname>user.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+			<option name="user.community.canViewCategory">
+				<categoryname>user.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+			<option name="user.community.canViewTopic">
+				<categoryname>user.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+			<option name="user.community.canCreateTopic">
+				<categoryname>user.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+			<option name="user.community.canComment">
+				<categoryname>user.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+			<!-- mod -->
+			<option name="mod.community.canDeleteTopic">
+				<categoryname>mod.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+			<option name="mod.community.canEditTopic">
+				<categoryname>mod.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+			<!-- admin -->
+			<option name="admin.community.canManageCategory">
+				<categoryname>admin.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+
+        </options>
+	</import>
+</data>

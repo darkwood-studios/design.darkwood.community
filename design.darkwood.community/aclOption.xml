@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/aclOption.xsd">
+	<import>
+		<options>
+			<option name="canViewCategory">
+				<objecttype>design.darkwood.community.topic.category</objecttype>
+			</option>
+			<option name="canModerateCategory">
+				<objecttype>design.darkwood.community.topic.category</objecttype>
+			</option>
+			<option name="canCreateTopicsInCategory">
+				<objecttype>design.darkwood.community.topic.category</objecttype>
+			</option>
+			<option name="canWriteCommentsInCategory">
+				<objecttype>design.darkwood.community.topic.category</objecttype>
+			</option>
+		
+		</options>
+	</import>
+</data>

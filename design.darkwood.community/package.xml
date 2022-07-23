@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<package name="design.darkwood.community" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/package.xsd">
+
+	<packageinformation>
+        <packagename>Modern Community (Forum Lite)</packagename>
+        <packagedescription>A simple high performance forum for your community.</packagedescription>
+        <packagedescription language="de">Ein simples hochperformantes Forum für Ihre Community.</packagedescription>
+        <isapplication>1</isapplication>
+        <applicationdirectory>community</applicationdirectory>
+        <version>5.5.0 dev 1</version>
+        <date>2022-07-23</date>
+    </packageinformation>
+
+    <authorinformation>
+		<author><![CDATA[Darkwood.Design]]></author>
+		<authorurl><![CDATA[https://darkwood.design]]></authorurl>
+	</authorinformation>
+	
+	<requiredpackages>
+		<requiredpackage minversion="5.5.0 RC 1">com.woltlab.wcf</requiredpackage>
+	</requiredpackages>
+
+    <instructions type="install">
+		<!-- sql -->
+		<instruction type="sql" />
+		<!-- files -->
+		<instruction type="file" />
+		<!-- templates -->
+		<instruction type="template" />
+
+        <!-- xml -->
+		<instruction type="page" />
+		<instruction type="menuItem" />
+		<instruction type="acpMenu" />
+		<instruction type="userGroupOption" />
+		<instruction type="objectType" />
+		<instruction type="aclOption" />
+		<instruction type="userNotificationEvent" />
+		<!--
+		<instruction type="acpTemplate" />
+		<instruction type="option" />
+		<instruction type="language" />
+		-->
+	</instructions>
+
+</package>
