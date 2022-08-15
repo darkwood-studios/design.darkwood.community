@@ -4,7 +4,7 @@
 	<packageinformation>
         <packagename>Modern Community (Forum Lite)</packagename>
         <packagedescription>A simple high performance forum for your community.</packagedescription>
-        <packagedescription language="de">Ein simples hochperformantes Forum für Ihre Community.</packagedescription>
+        <packagedescription language="de">Ein simples hochperformantes Forum für die WoltLab Suite.</packagedescription>
         <isapplication>1</isapplication>
         <applicationdirectory>community</applicationdirectory>
         <version>5.5.0 dev 1</version>
