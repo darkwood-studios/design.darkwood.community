@@ -2,12 +2,10 @@
 
 namespace community\form;
 
-use community\data\todo\TopicAction;
-use community\data\category\TopicCategory;
+use community\data\topic\TopicAction;
 
-use wcf\system\WCF;
 use wcf\form\AbstractFormBuilderForm;
-use wcf\system\request\LinkHandler;
+use wcf\util\HeaderUtil;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\form\builder\field\TextFormField;
 use wcf\system\form\builder\field\HiddenFormField;
@@ -99,12 +97,9 @@ class TopicAddForm extends AbstractFormBuilderForm
     {
         parent::save();
 
-        if ($this->formAction == 'create')
-        {
-            WCF::getTPL()->assign([
-                'success' => true,
-                'objectEditLink' => LinkHandler::getInstance()->getControllerLink(TopicEditForm::class, ['id' => $this->objectAction->getReturnValues()['returnValues']->topicID])
-            ]);
-        }
+        /** @var Topic $topic */
+        $topic = $this->objectAction->executeAction()['returnValues'];
+
+        HeaderUtil::redirect($topic->getLink());
     }
 }
