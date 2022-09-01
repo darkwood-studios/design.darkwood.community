@@ -42,9 +42,16 @@ class TopicAddForm extends AbstractFormBuilderForm
     public $objectEditLinkController = TopicEditForm::class;
 
     /**
-     * category-id the topic will get created with
+     * category id
+     * @var int
      */
     public $categoryID;
+
+    /**
+     * category object
+     * @var Category
+     */
+    public $category;
 
     /**
      * @inheritDoc
