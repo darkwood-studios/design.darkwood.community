@@ -7,7 +7,11 @@
 
 {include file='header'}
 
-{include file='categoryList' application='community'}
+{if $categoryList|count}
+	{include file='categoryList' application='community'}
+{else}
+	<p class="info">{lang}wcf.global.noItems{/lang}</p>
+{/if}
 
 {hascontent}
 	<footer class="contentFooter">
