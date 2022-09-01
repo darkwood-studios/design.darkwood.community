@@ -4,7 +4,7 @@ namespace community\page;
 
 use community\data\topic\TopicList;
 use wcf\data\category\Category;
-use wcf\page\MultipleLinkPage;
+use wcf\page\SortablePage;
 use wcf\system\category\CategoryHandler;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\exception\PermissionDeniedException;
@@ -20,8 +20,23 @@ use wcf\system\WCF;
  * @license    Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
  * @link    https://darkwood.design/
  */
-class CategoryPage extends MultipleLinkPage
+class CategoryPage extends SortablePage
 {
+    /**
+     * @inheritDoc
+     */
+    public $defaultSortField = 'time';
+
+    /**
+     * @inheritDoc
+     */
+    public $defaultSortOrder = 'DESC';
+
+    /**
+     * @inheritDoc
+     */
+    public $validSortFields = ['time', 'cumulativeLikes', 'comments', 'lastCommentTime', 'responses', 'views'];
+
     /**
      * category object
      *

@@ -24,6 +24,14 @@
             <requireObjectID>1</requireObjectID>
         </page>
 
+		<page identifier="design.darkwood.community.TopicAdd">
+            <pageType>system</pageType>
+            <controller>community\form\TopicAddForm</controller>
+            <name language="de">Thema erstellen</name>
+            <name language="en">Add topic</name>
+            <parent>design.darkwood.community.Category</parent>
+        </page>
+
         <page identifier="design.darkwood.community.Topic">
             <pageType>system</pageType>
             <controller>community\page\TopicPage</controller>
