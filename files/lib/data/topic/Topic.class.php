@@ -9,12 +9,14 @@ use wcf\system\cache\runtime\UserProfileRuntimeCache;
 use wcf\system\category\CategoryHandler;
 use wcf\system\exception\SystemException;
 use wcf\system\request\LinkHandler;
+use wcf\util\StringUtil;
+use wcf\system\html\output\HtmlOutputProcessor;
 
 /**
  * Class Topic
  *
  * @package community\data\topic
- * @author    Daniel Hass
+ * @author    Daniel Hass, Julian Pfeil
  * @copyright    2022 Darkwood.Design
  * @license    Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
  * @link    https://darkwood.design/
@@ -49,6 +51,16 @@ class Topic extends DatabaseObject implements ITitledLinkObject
      * @var mixed|UserProfile|null
      */
     private $lastCommentUserProfile;
+
+    /**
+     * Returns the name of the topic if a topic object is treated as a string.
+     *
+     * @return  string
+     */
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 
     /**
      * @inheritDoc
@@ -125,4 +137,59 @@ class Topic extends DatabaseObject implements ITitledLinkObject
         }
         return $this->lastCommentUserProfile;
     }
+
+    /**
+     * Returns the formatted message.
+     */
+     public function getFormattedMessage(): string
+    {
+        $processor = new HtmlOutputProcessor();
+        $processor->process($this->message, 'design.darkwood.community.topic', $this->topicID);
+
+        return $processor->getHtml();
+    }
+
+    /**
+     * Returns a simplified version of the formatted message.
+     *
+     * @return	string
+     */
+    public function getSimplifiedFormattedMessage()
+    {
+        // remove [readmore] tag
+        $message = \str_replace('[readmore]', '', $this->getFormattedMessage());
+
+        // parse and return message
+        $processor = new HtmlOutputProcessor();
+        $processor->setOutputType('text/simplified-html');
+        $processor->process($message, 'design.darkwood.community.topic', $this->topicID);
+
+        return $processor->getHtml();
+    }
+
+    /**
+     * Returns a plain unformatted version of the message.
+     *
+     * @return	string
+     */
+    public function getPlainMessage()
+    {
+        // remove [readmore] tag
+        $message = \str_replace('[readmore]', '', $this->getFormattedMessage());
+
+        // parse and return message
+        $processor = new HtmlOutputProcessor();
+        $processor->setOutputType('text/plain');
+        $processor->process($message, 'design.darkwood.community.topic', $this->topicID);
+
+        return $processor->getHtml();
+    }
+	
+	/**
+	 * @inheritDoc
+	 */
+	public function getExcerpt() {
+        $excerpt = StringUtil::truncate($this->getPlainMessage());
+		return $excerpt;
+	}
 }

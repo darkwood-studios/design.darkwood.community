@@ -6,6 +6,8 @@ use community\data\topic\TopicAction;
 
 use wcf\form\AbstractFormBuilderForm;
 use wcf\util\HeaderUtil;
+use wcf\system\WCF;
+use wcf\system\category\CategoryHandler;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\form\builder\field\TextFormField;
 use wcf\system\form\builder\field\HiddenFormField;
@@ -54,9 +56,15 @@ class TopicAddForm extends AbstractFormBuilderForm
         if ($this->formAction == 'create') {
             if (isset($_REQUEST['id'])) {
                 $this->categoryID = \intval($_REQUEST['id']);
-            } 
-            else {
+            }
+
+            $this->category = CategoryHandler::getInstance()->getCategory($this->categoryID);
+            
+            if ($this->category === null) {
                 throw new IllegalLinkException();
+            }
+            if ($this->category->getPermission('canViewCategory', WCF::getUser()) === 0) {
+                throw new PermissionDeniedException();
             }
         }
     }
