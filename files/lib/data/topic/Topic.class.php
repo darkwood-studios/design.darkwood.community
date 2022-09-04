@@ -97,6 +97,11 @@ class Topic extends DatabaseObject implements ITitledLinkObject
         return false;
     }
 
+    public function canEdit()
+    {
+        return false; // todo
+    }
+
     /**
      * Returns the category name
      *

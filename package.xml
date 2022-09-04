@@ -7,8 +7,8 @@
         <packagedescription language="de">Ein simples hochperformantes Forum für die WoltLab Suite.</packagedescription>
         <isapplication>1</isapplication>
         <applicationdirectory>community</applicationdirectory>
-        <version>5.5.0 dev 1</version>
-        <date>2022-07-23</date>
+        <version>5.5.0 dev 3</version>
+        <date>2022-09-04</date>
     </packageinformation>
 
     <authorinformation>
@@ -23,8 +23,11 @@
     <instructions type="install">
 		<!-- sql -->
 		<instruction type="sql" />
+
 		<!-- files -->
 		<instruction type="file" />
+		<instruction type="file" application="wcf">files_wcf.tar</instruction>
+
 		<!-- templates -->
 		<instruction type="template" />
 
@@ -41,6 +44,12 @@
 		<instruction type="option" />
 		<instruction type="language" />
 		-->
+	</instructions>
+
+	<instructions type="update" fromversion="*">
+		<instruction type="file"/>
+		<instruction type="file" application="wcf">files_wcf.tar</instruction>
+		<instruction type="template"/>
 	</instructions>
 
 </package>
