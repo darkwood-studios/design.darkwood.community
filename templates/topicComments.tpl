@@ -1,4 +1,4 @@
-{include file='__commentJavaScript' commentContainerID='topicCommentList'}
+{include file='__commentJavaScript' commentContainerID='topicCommentList' commentHandlerClass='Community.TopicComment.Handler'}
 
 <ul id="topicCommentList" class="commentList containerList" {*
         *}data-can-add="{if $commentCanAdd}true{else}false{/if}" {*
