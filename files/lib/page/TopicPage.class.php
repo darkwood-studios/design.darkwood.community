@@ -94,7 +94,7 @@ class TopicPage extends AbstractPage
             $this->topic->topicID,
             false
         );
-        $this->commentList->sqlOrderBy = 'commentID DESC';
+        $this->commentList->sqlOrderBy = 'comment.time ASC';
         $this->commentList->readObjects();
     }
 
