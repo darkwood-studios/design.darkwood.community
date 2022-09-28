@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/language.xsd" languagecode="en" languagename="English" countrycode="gb">
+
+	<category name="community.global">
+		<item name="community.global.dummy"><![CDATA[Dummy here]]></item>
+	</category>
+
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.community"><![CDATA[Community (Board Lite)]]></item>
+		<item name="wcf.acp.option.category.community.category"><![CDATA[Kategories (Boards)]]></item>
+		<item name="wcf.acp.option.category.community.topic"><![CDATA[Topics (threads)]]></item>
+		<item name="wcf.acp.option.category.community.comment"><![CDATA[Comments (posts)]]></item>
+		<item name="wcf.acp.option.community_category_topics_per_page"><![CDATA[Topics per page]]></item>
+		<item name="wcf.acp.option.community_topic_comment_sort_order"><![CDATA[Comment sort order]]></item>
+		<item name="wcf.acp.option.community_comment_min_char_length"><![CDATA[Comment min character length]]></item>
+	</category>
+
+</language>
