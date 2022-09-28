@@ -91,8 +91,11 @@ class TopicPage extends AbstractPage
         $this->commentList = CommentHandler::getInstance()->getCommentList(
             $this->commentManager,
             $this->commentObjectTypeID,
-            $this->topic->topicID
+            $this->topic->topicID,
+            false
         );
+        $this->commentList->sqlOrderBy = 'comment.time ASC';
+        $this->commentList->readObjects();
     }
 
     /**

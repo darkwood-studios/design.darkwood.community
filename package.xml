@@ -7,8 +7,8 @@
         <packagedescription language="de">Ein simples hochperformantes Forum für die WoltLab Suite.</packagedescription>
         <isapplication>1</isapplication>
         <applicationdirectory>community</applicationdirectory>
-        <version>5.5.0 dev 3</version>
-        <date>2022-09-04</date>
+        <version>5.5.0 dev 4</version>
+        <date>2022-09-16</date>
     </packageinformation>
 
     <authorinformation>
@@ -39,6 +39,7 @@
 		<instruction type="objectType" />
 		<instruction type="aclOption" />
 		<instruction type="userNotificationEvent" />
+		<instruction type="templateListener" />
 		<!--
 		<instruction type="acpTemplate" />
 		<instruction type="option" />
@@ -50,6 +51,7 @@
 		<instruction type="file"/>
 		<instruction type="file" application="wcf">files_wcf.tar</instruction>
 		<instruction type="template"/>
+		<instruction type="templateListener" />
 	</instructions>
 
 </package>
