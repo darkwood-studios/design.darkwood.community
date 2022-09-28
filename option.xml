@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/option.xsd">
+	<import>
+		<!-- categories -->
+		<categories>
+			<category name="community"></category>
+			<category name="community.category">
+				<parent>community</parent>
+			</category>
+			<category name="community.topic">
+				<parent>community</parent>
+			</category>
+			<category name="community.comment">
+				<parent>community</parent>
+			</category>
+		</categories>
+		
+		<!-- options -->
+		<options>
+			<option name="community_category_topics_per_page">
+				<categoryname>community.category</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>20</defaultvalue>
+			</option>
+
+			<option name="community_topic_comment_sort_order">
+				<categoryname>community.topic</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue><![CDATA[DESC]]></defaultvalue>
+				<selectoptions><![CDATA[DESC:wcf.global.sortOrder.descending
+ASC:wcf.global.sortOrder.ascending]]></selectoptions>
+			</option>
+
+			<option name="community_comment_min_char_length">
+				<categoryname>community.comment</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+		</options>
+	</import>
+</data>
