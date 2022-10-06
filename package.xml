@@ -7,7 +7,7 @@
         <packagedescription language="de">Ein simples hochperformantes Forum für die WoltLab Suite.</packagedescription>
         <isapplication>1</isapplication>
         <applicationdirectory>community</applicationdirectory>
-        <version>5.5.0 dev 12</version>
+        <version>5.5.0 dev 16</version>
         <date>2022-10-06</date>
     </packageinformation>
 
@@ -39,7 +39,7 @@
 
 		<!-- sql -->
 		<instruction type="database">acp/database/install_design.darkwood.community.php</instruction>
-		<instruction type="database">acp/database/install_design.darkwood.community_category.php</instruction>
+		<instruction type="script">acp/script/install_design.darkwood.community.php</instruction>
 
 		<!-- templates -->
 		<instruction type="template" />

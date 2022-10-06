@@ -70,7 +70,7 @@ class CategoryAddForm extends AbstractCategoryAddForm
      */
     public static function readImage($imageID)
     {
-        if (!empty($giftImageID)) {
+        if (!empty($imageID)) {
             $media = new Media($imageID);
             if ($media->isAccessible()) {
                 return new ViewableMedia($media);

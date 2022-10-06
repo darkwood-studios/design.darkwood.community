@@ -1,3 +1,10 @@
+// communityCategoryList
+.communityCategoryList {
+    .communityCategory:not(:first-child) {
+        margin-top: 20px;
+    }
+}
+
 // Topic(Add|Edit)Form messageContainer
 body#tpl_community_topicAdd {
     #messageContainerContainer {
