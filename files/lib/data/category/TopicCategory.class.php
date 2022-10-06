@@ -5,6 +5,7 @@ namespace community\data\category;
 use wcf\data\category\AbstractDecoratedCategory;
 use wcf\data\IAccessibleObject;
 use wcf\data\ITitledLinkObject;
+use wcf\data\media\Media;
 use wcf\data\user\User;
 use wcf\system\category\CategoryHandler;
 use wcf\system\exception\SystemException;
@@ -102,4 +103,63 @@ class TopicCategory extends AbstractDecoratedCategory implements IAccessibleObje
         // check permissions
         return $this->getPermission('canViewCategory', $user);
     }
+
+    /**
+     *
+     */
+    public function getIcon($size = 32)
+    {
+        $icon = $this->getImageIcon($size);
+        if (empty($icon)) {
+            $icon = $this->getBadgeIcon($size);
+        }
+
+        return $icon;
+    }
+
+    /**
+     * @param int $size
+     * @return string
+     */
+    private function getImageIcon($size = 32)
+    {
+        if ($link = $this->getImageIconLink()) {
+            return '<span class="trophyIcon categoryIcon" style="height: ' . $size . 'px; width: ' . $size . 'px;overflow:hidden;"><img src="' . $link . '" alt="" style="height: ' . $size . 'px;"/></span>';
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * @return string|null
+     */
+    private function getBadgeIcon($size = 32)
+    {
+        $iconName = $this->iconName;
+
+        if (empty($iconName)) {
+            return null;
+        }
+
+        return '<span class="icon icon' . $size . ' fa-' . $this->iconName . ' trophyIcon categoryIcon" style="color: ' . $this->iconColor . '; background-color: ' . $this->badgeColor . ';"></span>';
+    }
+
+    /**
+     * @return null
+     */
+    protected function getImageIconLink()
+    {
+        $imageID = $this->imageID;
+        if (empty($imageID)) {
+            return null;
+        }
+
+        $media = new Media($imageID);
+        if ($media->isAccessible()) {
+            return $media->getLink();
+        }
+
+        return null;
+    }
+
 }
