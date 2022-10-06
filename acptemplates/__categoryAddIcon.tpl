@@ -52,16 +52,16 @@
 					{/if}
 				</div>
 				<p class="button jsMediaSelectButton" data-store="imageID" data-display="imageDisplay">{lang}wcf.media.chooseImage{/lang}</p>
-				<small>{lang}wcf.acp.jcoinsShop.item.image.description{/lang}</small>
+				<small>todo beschreibung...</small>
 				<input type="hidden" name="imageID" id="imageID"{if $imageID|isset} value="{@$imageID}"{/if}>
 				{if $errorField == 'image'}
-					<small class="innerError">{lang}wcf.acp.jcoinsShop.item.image.error.{@$errorType}{/lang}</small>
+					<small class="innerError">todo Fehler...</small>
 				{/if}
 			</dd>
 		</dl>
 	{elseif $action == 'edit' && $image|isset && $image->hasThumbnail('small')}
 		<dl>
-			<dt>{lang}wcf.acp.jcoinsShop.item.image{/lang}</dt>
+			<dt>Bild</dt>
 			<dd>
 				<div id="imageDisplay">{@$image->getThumbnailTag('small')}</div>
 			</dd>

@@ -40,13 +40,18 @@ class CategoryEditForm extends AbstractCategoryEditForm
     {
         parent::assignVariables();
 
+        $iconName = $this->category->iconName;
+        $iconColor = $this->category->iconColor;
+        $badgeColor = $this->category->badgeColor;
+        $imageID = $this->category->imageID;
+
         WCF::getTPL()->assign(
             [
-                'iconName' => $this->category->iconName ?? 'folder-open',
-                'iconColor' => $this->category->iconColor ?? 'rgba(255, 255, 255, 1)',
-                'badgeColor' => $this->category->badgeColor ?? 'rgba(50, 92, 132, 1)',
-                'imageID' => $this->category->imageID ?? null,
-                'image' => isset($this->category->imageID) ? CategoryAddForm::readImage($this->category->imageID) : null,
+                'iconName' => $iconName ?? 'folder-open',
+                'iconColor' => $iconColor ?? 'rgba(255, 255, 255, 1)',
+                'badgeColor' => $badgeColor ?? 'rgba(50, 92, 132, 1)',
+                'imageID' => $imageID ?? null,
+                'image' => isset($imageID) ? CategoryAddForm::readImage($imageID) : null,
             ]
         );
     }

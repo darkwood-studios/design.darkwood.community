@@ -21,10 +21,11 @@
                                     {$categoryItem->getTitle()}
 								</a>
 							</h3>
+							<div>
+                                {@$categoryItem->description|language}
+							</div>
 						</div>
-						<div>
-                            {@$categoryItem->description|language}
-						</div>
+
 					</div>
 
                     {if $categoryItem->hasChildren()}
