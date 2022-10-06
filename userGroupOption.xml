@@ -48,8 +48,20 @@
 				<defaultvalue>0</defaultvalue>
 				<admindefaultvalue>1</admindefaultvalue>
 			</option>
+			<option name="user.community.canMarkAsDone">
+				<categoryname>user.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
 			<!-- mod -->
 			<option name="mod.community.canDeleteTopic">
+				<categoryname>mod.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+			<option name="mod.community.canDeleteTopicPermanent">
 				<categoryname>mod.community</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>0</defaultvalue>
@@ -61,6 +73,13 @@
 				<defaultvalue>0</defaultvalue>
 				<admindefaultvalue>1</admindefaultvalue>
 			</option>
+			<option name="mod.community.canCommentClosedTopics">
+				<categoryname>mod.community</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+			</option>
+
 			<!-- admin -->
 			<option name="admin.community.canManageCategory">
 				<categoryname>admin.community</categoryname>

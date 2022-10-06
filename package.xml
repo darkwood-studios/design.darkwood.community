@@ -7,8 +7,8 @@
         <packagedescription language="de">Ein simples hochperformantes Forum für die WoltLab Suite.</packagedescription>
         <isapplication>1</isapplication>
         <applicationdirectory>community</applicationdirectory>
-        <version>5.5.0 dev 5</version>
-        <date>2022-09-28</date>
+        <version>5.5.0 dev 12</version>
+        <date>2022-10-06</date>
     </packageinformation>
 
     <authorinformation>
@@ -17,21 +17,16 @@
 	</authorinformation>
 	
 	<requiredpackages>
-		<requiredpackage minversion="5.5.0 RC 1">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="5.5.0">com.woltlab.wcf</requiredpackage>
 	</requiredpackages>
 
     <instructions type="install">
-		<!-- sql -->
-		<instruction type="sql" />
 
 		<!-- files -->
 		<instruction type="file" />
 		<instruction type="file" application="wcf">files_wcf.tar</instruction>
 
-		<!-- templates -->
-		<instruction type="template" />
-
-        <!-- xml -->
+		<!-- xml -->
 		<instruction type="page" />
 		<instruction type="menuItem" />
 		<instruction type="acpMenu" />
@@ -42,8 +37,15 @@
 		<instruction type="templateListener" />
 		<instruction type="option"/>
 
+		<!-- sql -->
+		<instruction type="database">acp/database/install_design.darkwood.community.php</instruction>
+		<instruction type="database">acp/database/install_design.darkwood.community_category.php</instruction>
+
+		<!-- templates -->
+		<instruction type="template" />
+		<instruction type="acpTemplate"/>
+
 		<!--
-		<instruction type="acpTemplate" />
 		<instruction type="language" />
 		-->
 	</instructions>
@@ -52,6 +54,7 @@
 		<instruction type="file"/>
 		<instruction type="file" application="wcf">files_wcf.tar</instruction>
 		<instruction type="template"/>
+		<instruction type="acpTemplate"/>
 		<instruction type="templateListener" />
 	</instructions>
 
