@@ -16,6 +16,17 @@
 			<ul class="inlineList contentHeaderMetaData">
                 {event name='beforeMetaData'}
 
+                {if $topic->hasLabels()}
+                    <li>
+                        <span class="icon icon16 fa-tags"></span>
+                        <ul class="labelList">
+                            {foreach from=$topic->getLabels() item=label}
+                                <li>{@$label->render()}</li>
+                            {/foreach}
+                        </ul>
+                    </li>
+                {/if}
+
 				<li itemprop="author" itemscope itemtype="http://schema.org/Person">
 					<span class="icon icon16 fa-user"></span>
 

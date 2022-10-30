@@ -5,7 +5,6 @@ namespace community\page;
 use community\data\category\TopicCategory;
 use community\data\category\TopicCategoryNodeTree;
 use Exception;
-use ticketsystem\data\category\TicketCategory;
 use wcf\page\AbstractPage;
 use wcf\system\exception\SystemException;
 use wcf\system\WCF;
@@ -14,7 +13,7 @@ use wcf\system\WCF;
  * Class IndexPage
  *
  * @package community\page
- * @author    Daniel Hass
+ * @author    Daniel Hass, Julian Pfeil
  * @copyright    2022 Darkwood.Design
  * @license    Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
  * @link    https://darkwood.design/
@@ -22,7 +21,7 @@ use wcf\system\WCF;
 class IndexPage extends AbstractPage
 {
     /**
-     * @var TicketCategory[]
+     * @var TopicCategory[]
      */
     public $categoryList = [];
 

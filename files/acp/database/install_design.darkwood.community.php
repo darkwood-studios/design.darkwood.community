@@ -7,7 +7,7 @@ use wcf\system\database\table\column\ObjectIdDatabaseTableColumn;
 use wcf\system\database\table\column\SmallintDatabaseTableColumn;
 use wcf\system\database\table\column\NotNullInt10DatabaseTableColumn;
 use wcf\system\database\table\column\IntDatabaseTableColumn;
-use wcf\system\database\table\column\TinyintDatabaseTableColumn;
+use wcf\system\database\table\column\DefaultFalseBooleanDatabaseTableColumn;
 use wcf\system\database\table\DatabaseTable;
 use wcf\system\database\table\index\DatabaseTableForeignKey;
 use wcf\system\database\table\index\DatabaseTablePrimaryIndex;
@@ -34,9 +34,11 @@ return [
                 NotNullVarchar255DatabaseTableColumn::create('lastCommentUsername')->defaultValue(''),
                 MediumintDatabaseTableColumn::create('responses')->length(7), //todo wird das benötigt?
                 NotNullVarchar255DatabaseTableColumn::create('responseIDs')->defaultValue(''), //todo wird das benötigt?
-                TinyintDatabaseTableColumn::create('isDone')->length(1)->defaultValue(0),
-                TinyintDatabaseTableColumn::create('isDeleted')->length(1)->defaultValue(0),
-                TinyintDatabaseTableColumn::create('isClosed')->length(1)->defaultValue(0),
+                DefaultFalseBooleanDatabaseTableColumn::create('isDone'),
+                DefaultFalseBooleanDatabaseTableColumn::create('isDeleted'),
+                DefaultFalseBooleanDatabaseTableColumn::create('isClosed'),
+                DefaultFalseBooleanDatabaseTableColumn::create('hasEmbeddedObjects'),
+                DefaultFalseBooleanDatabaseTableColumn::create('hasLabels'),
             ]
         )
         ->indices(

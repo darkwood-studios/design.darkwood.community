@@ -7,8 +7,8 @@
         <packagedescription language="de">Ein simples hochperformantes Forum für die WoltLab Suite.</packagedescription>
         <isapplication>1</isapplication>
         <applicationdirectory>community</applicationdirectory>
-        <version>5.5.0 dev 16</version>
-        <date>2022-10-06</date>
+        <version>5.5.0 dev 17</version>
+        <date>2022-10-30</date>
     </packageinformation>
 
     <authorinformation>
@@ -54,8 +54,10 @@
 		<instruction type="file"/>
 		<instruction type="file" application="wcf">files_wcf.tar</instruction>
 		<instruction type="template"/>
+		<instruction type="objectType" />
 		<instruction type="acpTemplate"/>
 		<instruction type="templateListener" />
+		<instruction type="database">acp/database/install_design.darkwood.community.php</instruction>
 	</instructions>
 
 </package>
