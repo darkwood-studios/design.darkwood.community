@@ -5,6 +5,19 @@
 		<item name="community.global.dummy"><![CDATA[Dummy here]]></item>
 	</category>
 
+	<category name="community.category">
+		<item name="community.category.noTopics"><![CDATA[No topic in this category]]></item>
+	</category>
+
+	<category name="community.topic">
+		<item name="community.topic.recentActivity.topicComment"><![CDATA[Commented on topic <a href="{$topic->getLink()}#comment{$commentID}">{$topic->getTitle()}</a>.]]></item>
+		<item name="community.topic.recentActivity.topicCommentResponse"><![CDATA[Replied to a comment by <a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a> on topic <a href="{$topic->getLink()}#comment{@$commentID}/response{@$responseID}">{$topic->getTitle()}</a>.]]></item>
+		<item name="community.topic.subject"><![CDATA[Subject]]></item>
+		<item name="community.topic.message"><![CDATA[Message]]></item>
+		<item name="community.topic.add"><![CDATA[New topic]]></item>
+		<item name="community.topic.edit"><![CDATA[Edit topic]]></item>
+	</category>
+
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.category.community"><![CDATA[Community (Board Lite)]]></item>
 		<item name="wcf.acp.option.category.community.category"><![CDATA[Kategories (Boards)]]></item>
@@ -13,6 +26,11 @@
 		<item name="wcf.acp.option.community_category_topics_per_page"><![CDATA[Topics per page]]></item>
 		<item name="wcf.acp.option.community_topic_comment_sort_order"><![CDATA[Comment sort order]]></item>
 		<item name="wcf.acp.option.community_comment_min_char_length"><![CDATA[Comment min character length]]></item>
+	</category>
+
+	<category name="wcf.user.recentActivity">
+		<item name="wcf.user.recentActivity.design.darkwood.community.topicComment.recentActivityEvent"><![CDATA[Comment (Community)]]></item>
+		<item name="wcf.user.recentActivity.design.darkwood.community.topicComment.response.recentActivityEvent"><![CDATA[Reply (Community)]]></item>
 	</category>
 
 </language>

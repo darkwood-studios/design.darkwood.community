@@ -1,65 +1,79 @@
 <div class="section">
 	<ul class="communityCategoryList">
-        {if !$categoryList->hasChildren()}
+		{if !$categoryList->hasChildren()}
 			<p class="info">{lang}wcf.global.noItems{/lang}</p>
-        {/if}
-        {foreach from=$categoryList item=categoryItem}
-            {if $categoryItem->getPermission('canViewCategory', $__wcf->getUser()) !== 0}
+		{/if}
+		{foreach from=$categoryList item=categoryItem}
+			{if $categoryItem->getPermission('canViewCategory', $__wcf->getUser()) !== 0}
 				<li class="communityCategory" data-category-id="{@$categoryItem->categoryID}">
 
 					<div class="box48" style="align-items: center;{* todo: move css *}">
-                        {if $categoryItem->getIcon(48)}
-							<a href="{link application='community' controller='Category' object=$categoryItem->getDecoratedObject()}{/link}">
-                                {@$categoryItem->getIcon(48)}
+						{if $categoryItem->getIcon(48)}
+							<a
+								href="{link application='community' controller='Category' object=$categoryItem->getDecoratedObject()}{/link}">
+								{@$categoryItem->getIcon(48)}
 							</a>
-                        {else}
+						{else}
 							<span></span>
-                        {/if}
-						<div class="containerHeadline">
+						{/if}
+						<div class="containerHeadline communityCategoryTitle">
 							<h3>
-								<a href="{link application='community' controller='Category' object=$categoryItem->getDecoratedObject()}{/link}">
-                                    {$categoryItem->getTitle()}
+								<a
+									href="{link application='community' controller='Category' object=$categoryItem->getDecoratedObject()}{/link}">
+									{$categoryItem->getTitle()}
 								</a>
 							</h3>
 							<div>
-                                {@$categoryItem->description|language}
+								{@$categoryItem->description|language}
 							</div>
 						</div>
+						{if $categoryItem->getLastComment()}
+							<div class="lastComment">
+                                {include file='categoryListLastComment' application='community' comment=$categoryItem->getLastComment()}
+							</div>
+						{/if}
 
 					</div>
 
-                    {if $categoryItem->hasChildren()}
+					{if $categoryItem->hasChildren()}
 						<ol style="margin-left: 18px;margin-top: 8px;{* todo: move css *}">
-                            {foreach from=$categoryItem item=subCategoryItem}
-                                {if $subCategoryItem->getPermission('canViewCategory', $__wcf->getUser()) !== 0}
+							{foreach from=$categoryItem item=subCategoryItem}
+								{if $subCategoryItem->getPermission('canViewCategory', $__wcf->getUser()) !== 0}
 									<li class="communitySubCategory" data-category-id="{@$subCategoryItem->categoryID}">
 										<div class="box32" style="align-items: center;">
-                                            {if $subCategoryItem->getIcon()}
-												<a href="{link application='community' controller='Category' object=$subCategoryItem->getDecoratedObject()}{/link}">
-                                                    {@$subCategoryItem->getIcon()}
+											{if $subCategoryItem->getIcon()}
+												<a
+													href="{link application='community' controller='Category' object=$subCategoryItem->getDecoratedObject()}{/link}">
+													{@$subCategoryItem->getIcon()}
 												</a>
-                                            {else}
+											{else}
 												<span></span>
-                                            {/if}
-											<div>
+											{/if}
+											<div class="communityCategoryTitle">
 												<p>
-													<a href="{link application='community' controller='Category' object=$subCategoryItem->getDecoratedObject()}{/link}">
-                                                        {$subCategoryItem->getTitle()}
+													<a
+														href="{link application='community' controller='Category' object=$subCategoryItem->getDecoratedObject()}{/link}">
+														{$subCategoryItem->getTitle()}
 													</a>
 												</p>
 												<small>
-                                                    {@$subCategoryItem->description|language}
+													{@$subCategoryItem->description|language}
 												</small>
 											</div>
+                                            {if $subCategoryItem->getLastComment()}
+												<div class="lastComment">
+                                                    {include file='categoryListLastComment' application='community' comment=$subCategoryItem->getLastComment()}
+												</div>
+                                            {/if}
 										</div>
 									</li>
-                                {/if}
-                            {/foreach}
+								{/if}
+							{/foreach}
 						</ol>
-                    {/if}
+					{/if}
 
 				</li>
-            {/if}
-        {/foreach}
+			{/if}
+		{/foreach}
 	</ul>
 </div>

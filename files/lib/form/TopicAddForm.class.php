@@ -12,11 +12,11 @@ use wcf\system\request\LinkHandler;
 use wcf\system\request\IRouteController;
 use wcf\system\category\CategoryHandler;
 use wcf\system\exception\IllegalLinkException;
+use wcf\system\exception\PermissionDeniedException;
 use wcf\system\form\builder\field\TextFormField;
 use wcf\system\form\builder\field\HiddenFormField;
 use wcf\system\form\builder\container\FormContainer;
 use wcf\system\form\builder\container\wysiwyg\WysiwygFormContainer;
-
 
 /**
  * Class TopicAddForm
@@ -44,7 +44,7 @@ class TopicAddForm extends AbstractFormBuilderForm
      */
     public $objectEditLinkController = TopicEditForm::class;
 
-   /**
+    /**
      * category id
      *
      * @var int
@@ -59,11 +59,11 @@ class TopicAddForm extends AbstractFormBuilderForm
     public $category;
 
     /**
-      * topic id
-      *
-      * @var int;
-      */
-     public $topicID;
+     * topic id
+     *
+     * @var int;
+     */
+    public $topicID;
 
     /**
      * @inheritDoc
@@ -77,13 +77,13 @@ class TopicAddForm extends AbstractFormBuilderForm
                 ->label('wcf.global.form.data')
                 ->appendChildren([
                     TextFormField::create('subject')
-                        ->label('design.darkwood.topic.subject')
+                        ->label('community.topic.subject')
                         ->required()
                         ->autoFocus()
                         ->maximumLength(255),
 
-					WysiwygFormContainer::create('message')
-                        ->label('design.darkwood.topic.message')
+                    WysiwygFormContainer::create('message')
+                        ->label('community.topic.message')
                         ->required()
                         ->messageObjectType('design.darkwood.community.topic')
                         ->supportMentions(true),

@@ -29,6 +29,7 @@ return [
                 MediumintDatabaseTableColumn::create('cumulativeLikes')->length(7),
                 SmallintDatabaseTableColumn::create('comments')->length(5),
                 SmallintDatabaseTableColumn::create('views')->length(5),
+                NotNullInt10DatabaseTableColumn::create('lastCommentID')->length(10)->defaultValue(null),
                 NotNullInt10DatabaseTableColumn::create('lastCommentTime')->defaultValue(0),
                 IntDatabaseTableColumn::create('lastCommentUserID')->length(10)->defaultValue(null),
                 NotNullVarchar255DatabaseTableColumn::create('lastCommentUsername')->defaultValue(''),
@@ -37,6 +38,7 @@ return [
                 TinyintDatabaseTableColumn::create('isDone')->length(1)->defaultValue(0),
                 TinyintDatabaseTableColumn::create('isDeleted')->length(1)->defaultValue(0),
                 TinyintDatabaseTableColumn::create('isClosed')->length(1)->defaultValue(0),
+                IntDatabaseTableColumn::create('languageID')->length(10)->defaultValue(null),
             ]
         )
         ->indices(
@@ -53,6 +55,11 @@ return [
                     ->referencedColumns(['userID'])
                     ->onDelete('SET NULL'),
                 DatabaseTableForeignKey::create()
+                    ->columns(['lastCommentID'])
+                    ->referencedTable('wcf1_comment')
+                    ->referencedColumns(['commentID'])
+                    ->onDelete('SET NULL'),
+                DatabaseTableForeignKey::create()
                     ->columns(['lastCommentUserID'])
                     ->referencedTable('wcf1_user')
                     ->referencedColumns(['userID'])
@@ -61,6 +68,11 @@ return [
                     ->columns(['categoryID'])
                     ->referencedTable('wcf1_category')
                     ->referencedColumns(['categoryID'])
+                    ->onDelete('SET NULL'),
+                DatabaseTableForeignKey::create()
+                    ->columns(['languageID'])
+                    ->referencedTable('wcf1_language')
+                    ->referencedColumns(['languageID'])
                     ->onDelete('SET NULL'),
             ]
         ),
