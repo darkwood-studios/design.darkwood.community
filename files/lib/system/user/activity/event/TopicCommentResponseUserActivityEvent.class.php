@@ -91,7 +91,8 @@ class TopicCommentResponseUserActivityEvent extends SingletonFactory implements 
                     // todo eintrag in sprache auswerten
                     $text = WCF::getLanguage()->getDynamicVariable('community.topic.recentActivity.topicCommentResponse', [
                         'commentAuthor' => $users[$comment->userID],
-                        'topic' => $topic
+                        'topic' => $topic,
+                        'commentID' => $comment->commentID,
                     ]);
                     $event->setTitle($text);
 

@@ -7,7 +7,7 @@
         <packagedescription language="de">Ein simples hochperformantes Forum für die WoltLab Suite.</packagedescription>
         <isapplication>1</isapplication>
         <applicationdirectory>community</applicationdirectory>
-        <version>5.5.0 dev 25</version>
+        <version>5.5.0 dev 26</version>
         <date>2022-11-12</date>
     </packageinformation>
 
