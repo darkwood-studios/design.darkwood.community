@@ -36,13 +36,13 @@
 
 				<li class="jsMarkAsDone" data-object-id="{@$topic->topicID}">
                     {if $topic->isDone}
-						<span class="icon icon16 fa-check-square-o" data-tooltip="{lang}design.darkwood.community.isDone{/lang}"
-							  aria-label="{lang}design.darkwood.community.isDone{/lang}"></span>
-						<span class="doneTitle">{lang}design.darkwood.community.isDone{/lang}</span>
+						<span class="icon icon16 fa-check-square-o" data-tooltip="{lang}community.topic.isDone{/lang}"
+							  aria-label="{lang}community.topic.isDone{/lang}"></span>
+						<span class="doneTitle">{lang}community.topic.isDone{/lang}</span>
                     {else}
-						<span class="icon icon16 fa-square-o" data-tooltip="{lang}design.darkwood.community.isUndone{/lang}"
-							  aria-label="{lang}design.darkwood.community.isUndone{/lang}"></span>
-						<span class="doneTitle">{lang}design.darkwood.community.isUndone{/lang}</span>
+						<span class="icon icon16 fa-square-o" data-tooltip="{lang}community.topic.isUndone{/lang}"
+							  aria-label="{lang}community.topic.isUndone{/lang}"></span>
+						<span class="doneTitle">{lang}community.topic.isUndone{/lang}</span>
                     {/if}
 				</li>
 

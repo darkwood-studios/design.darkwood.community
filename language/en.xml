@@ -16,6 +16,10 @@
 		<item name="community.topic.message"><![CDATA[Message]]></item>
 		<item name="community.topic.add"><![CDATA[New topic]]></item>
 		<item name="community.topic.edit"><![CDATA[Edit topic]]></item>
+		<item name="community.topic.isDone"><![CDATA[Done]]></item>
+		<item name="community.topic.isUndone"><![CDATA[Undone]]></item>
+		<item name="community.topic.replies"><![CDATA[Comments]]></item>
+		<item name="community.topic.views"><![CDATA[Views]]></item>
 	</category>
 
 	<category name="wcf.acp.option">

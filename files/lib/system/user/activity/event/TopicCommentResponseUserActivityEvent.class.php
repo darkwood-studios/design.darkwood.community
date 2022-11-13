@@ -93,6 +93,7 @@ class TopicCommentResponseUserActivityEvent extends SingletonFactory implements 
                         'commentAuthor' => $users[$comment->userID],
                         'topic' => $topic,
                         'commentID' => $comment->commentID,
+                        'responseID' => $response->responseID,
                     ]);
                     $event->setTitle($text);
 

@@ -4,7 +4,7 @@
 
 		<div>
 			<p>
-				<a href="{link application='community' controller='Topic' id=$comment.topicID}#comment={$comment.commentID}{/link}" class="communityTopicLink" data-topic-id="{$comment.topicID}">{$comment.subject}</a>
+				<a href="{link application='community' controller='Topic' id=$comment.topicID}#comment{$comment.commentID}{/link}" class="communityTopicLink" data-topic-id="{$comment.topicID}">{$comment.subject}</a>
 			</p>
 			<small>
                 {if $comment.userID}

@@ -10,12 +10,16 @@
 	</category>
 
 	<category name="community.topic">
-		<item name="community.topic.recentActivity.topicComment"><![CDATA[Hat einen Kommentar zum Artikel <a href="{$topic->getLink()}#comment{$commentID}">{$topic->getTitle()}</a> geschrieben.]]></item>
+		<item name="community.topic.recentActivity.topicComment"><![CDATA[Hat einen Kommentar zum Thema <a href="{$topic->getLink()}#comment{$commentID}">{$topic->getTitle()}</a> geschrieben.]]></item>
 		<item name="community.topic.recentActivity.topicCommentResponse"><![CDATA[Hat auf einen Kommentar von <a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a> zum Thema <a href="{$topic->getLink()}#comment{@$commentID}/response{@$responseID}">{$topic->getTitle()}</a> geantwortet.]]></item>
 		<item name="community.topic.subject"><![CDATA[Betreff]]></item>
 		<item name="community.topic.message"><![CDATA[Nachricht]]></item>
 		<item name="community.topic.add"><![CDATA[Neues Thema]]></item>
 		<item name="community.topic.edit"><![CDATA[Thema editieren]]></item>
+		<item name="community.topic.isDone"><![CDATA[Erledigt]]></item>
+		<item name="community.topic.isUndone"><![CDATA[Unerledigt]]></item>
+		<item name="community.topic.replies"><![CDATA[Kommentare]]></item>
+		<item name="community.topic.views"><![CDATA[Aufrufe]]></item>
 	</category>
 
 	<category name="wcf.acp.option">
