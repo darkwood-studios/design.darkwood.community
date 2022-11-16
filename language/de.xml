@@ -12,6 +12,11 @@
 	<category name="community.topic">
 		<item name="community.topic.recentActivity.topicComment"><![CDATA[Hat einen Kommentar zum Thema <a href="{$topic->getLink()}#comment{$commentID}">{$topic->getTitle()}</a> geschrieben.]]></item>
 		<item name="community.topic.recentActivity.topicCommentResponse"><![CDATA[Hat auf einen Kommentar von <a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a> zum Thema <a href="{$topic->getLink()}#comment{@$commentID}/response{@$responseID}">{$topic->getTitle()}</a> geantwortet.]]></item>
+		<item name="community.topic.comment.notification.message"><![CDATA[{if $author->userID}<strong>{$author}</strong>{else}Ein Gast{/if} hat einen Kommentar zu {if LANGUAGE_USE_INFORMAL_VARIANT}deinem{else}Ihrem{/if} Thema <strong>{$topic->getTitle()}</strong> verfasst.]]></item>
+		<item name="community.topic.comment.notification.message.stacked"><![CDATA[{@'wcf.user.notification.stacked.authorList'|language} haben Kommentare zu {if LANGUAGE_USE_INFORMAL_VARIANT}deinem{else}Ihrem{/if} Thema <strong>{$topic->getTitle()}</strong> verfasst.]]></item>
+		<item name="community.topic.commentResponse.notification.message"><![CDATA[{if $author->userID}<strong>{$author}</strong>{else}Ein Gast{/if} hat eine Antwort zu {if LANGUAGE_USE_INFORMAL_VARIANT}deinem{else}Ihrem{/if} Kommentar zum Thema <strong>{$topic->getTitle()}</strong> verfasst.]]></item>
+		<item name="community.topic.commentResponse.notification.message.stacked"><![CDATA[{@'wcf.user.notification.stacked.authorList'|language} haben Antworten zu {if LANGUAGE_USE_INFORMAL_VARIANT}deinem{else}Ihrem{/if} Kommentar zum Thema <strong>{$topic->getTitle()}</strong> verfasst.]]></item>
+		
 		<item name="community.topic.subject"><![CDATA[Betreff]]></item>
 		<item name="community.topic.message"><![CDATA[Nachricht]]></item>
 		<item name="community.topic.add"><![CDATA[Neues Thema]]></item>

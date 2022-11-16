@@ -12,6 +12,10 @@
 	<category name="community.topic">
 		<item name="community.topic.recentActivity.topicComment"><![CDATA[Commented on topic <a href="{$topic->getLink()}#comment{$commentID}">{$topic->getTitle()}</a>.]]></item>
 		<item name="community.topic.recentActivity.topicCommentResponse"><![CDATA[Replied to a comment by <a href="{link controller='User' object=$commentAuthor}{/link}">{$commentAuthor->username}</a> on topic <a href="{$topic->getLink()}#comment{@$commentID}/response{@$responseID}">{$topic->getTitle()}</a>.]]></item>
+		<item name="community.topic.comment.notification.message"><![CDATA[{if $author->userID}<strong>{$author}</strong>{else}A guest{/if} commented on your topic <strong>{$topic->getTitle()}</strong>.]]></item>
+		<item name="community.topic.comment.notification.message.stacked"><![CDATA[{@'wcf.user.notification.stacked.authorList'|language} commented on your topic <strong>{$topic->getTitle()}</strong>.]]></item>
+		<item name="community.topic.commentResponse.notification.message"><![CDATA[{if $author->userID}<strong>{$author}</strong>{else}A guest{/if} replied to your comment on the topic <strong>{$topic->getTitle()}</strong>.]]></item>
+		<item name="community.topic.commentResponse.notification.message.stacked"><![CDATA[{@'wcf.user.notification.stacked.authorList'|language} replied to your comment on the topic <strong>{$topic->getTitle()}</strong>.]]></item>
 		<item name="community.topic.subject"><![CDATA[Subject]]></item>
 		<item name="community.topic.message"><![CDATA[Message]]></item>
 		<item name="community.topic.add"><![CDATA[New topic]]></item>
