@@ -89,17 +89,12 @@ class Topic extends DatabaseObject implements ITitledLinkObject
         return true;
     }
 
-    public function isNew()
-    {
-        return true;
-    }
-
-    public function hasLabels()
-    {
-        return false;
-    }
-
     public function canEdit()
+    {
+        return false; // todo
+    }
+
+    public function canDelete()
     {
         return false; // todo
     }

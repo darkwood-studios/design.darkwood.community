@@ -2,12 +2,15 @@
 
 namespace community\page;
 
-use community\data\topic\Topic;
+use community\data\topic\ViewableTopic;
 
 use wcf\system\WCF;
 use wcf\page\AbstractPage;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\comment\CommentHandler;
+use community\system\label\object\TopicLabelObjectHandler;
+use wcf\system\language\LanguageFactory;
+use wcf\system\tagging\TagEngine;
 
 /**
  * Class TopicPage
@@ -54,6 +57,11 @@ class TopicPage extends AbstractPage
      * @var int
      */
     public $commentObjectTypeID = 0;
+    
+    /**
+    * list of tags
+    */
+    public $tags = [];
 
     /**
      * @inheritDoc
@@ -64,9 +72,7 @@ class TopicPage extends AbstractPage
 
         WCF::getTPL()->assign([
             'topic' => $this->topic,
-        ]);
-
-        WCF::getTPL()->assign([
+            'tags' => $this->tags,
             'commentCanAdd' => WCF::getSession()->getPermission('user.community.canComment'),
             'commentList' => $this->commentList,
             'commentObjectTypeID' => $this->commentObjectTypeID,
@@ -96,6 +102,21 @@ class TopicPage extends AbstractPage
         );
         $this->commentList->sqlOrderBy = 'comment.time ASC';
         $this->commentList->readObjects();
+
+        /* tags */
+        /* if (MODULE_TAGGING && WCF::getSession()->getPermission('user.tag.canViewTag')) {
+            $this->tags = TagEngine::getInstance()->getObjectTags('design.darkwood.community.topic', $this->topic->topicID, [($this->topic->languageID === null ? LanguageFactory::getInstance()->getDefaultLanguageID() : "")]);
+        } */
+
+        /* labels */
+        if ($this->topic->hasLabels) {
+            $assignedLabels = TopicLabelObjectHandler::getInstance()->getAssignedLabels([$this->topicID]);
+            if (isset($assignedLabels[$this->topicID])) {
+                foreach ($assignedLabels[$this->topicID] as $label) {
+                    $this->topic->addLabel($label);
+                }
+            }
+        }
     }
 
     /**
@@ -108,7 +129,7 @@ class TopicPage extends AbstractPage
         if (isset($_REQUEST['id'])) {
             $this->topicID = \intval($_REQUEST['id']);
         }
-        $this->topic = new Topic($this->topicID);
+        $this->topic = ViewableTopic::getTopic($this->topicID);
         if (!$this->topic->topicID) {
             throw new IllegalLinkException();
         }

@@ -4,6 +4,7 @@ namespace community\form;
 
 use community\data\topic\TopicAction;
 use community\data\topic\Topic;
+use community\data\category\TopicCategory;
 
 use wcf\form\AbstractFormBuilderForm;
 use wcf\util\HeaderUtil;
@@ -17,6 +18,11 @@ use wcf\system\form\builder\field\TextFormField;
 use wcf\system\form\builder\field\HiddenFormField;
 use wcf\system\form\builder\container\FormContainer;
 use wcf\system\form\builder\container\wysiwyg\WysiwygFormContainer;
+use community\system\cache\builder\TopicCategoryLabelCacheBuilder;
+use wcf\system\form\builder\field\BooleanFormField;
+use wcf\system\form\builder\field\dependency\ValueFormFieldDependency;
+use wcf\system\form\builder\field\label\LabelFormField;
+use wcf\system\form\builder\field\tag\TagFormField;
 
 /**
  * Class TopicAddForm
@@ -72,26 +78,73 @@ class TopicAddForm extends AbstractFormBuilderForm
     {
         parent::createForm();
 
-        $this->form->appendChild(
-            FormContainer::create('data')
-                ->label('wcf.global.form.data')
-                ->appendChildren([
-                    TextFormField::create('subject')
-                        ->label('community.topic.subject')
-                        ->required()
-                        ->autoFocus()
-                        ->maximumLength(255),
+        /* formContainer */
+        $formContainer = FormContainer::create('data')
+        ->label('wcf.global.form.data');
 
-                    WysiwygFormContainer::create('message')
-                        ->label('community.topic.message')
-                        ->required()
-                        ->messageObjectType('design.darkwood.community.topic')
-                        ->supportMentions(true),
+        $formContainer->appendChildren([
+            TextFormField::create('subject')
+                ->label('community.topic.subject')
+                ->required()
+                ->autoFocus()
+                ->maximumLength(255),
 
-                    HiddenFormField::create('categoryID')
-                        ->value($this->categoryID),
-                ])
-        );
+            HiddenFormField::create('categoryID')
+                ->value($this->categoryID),
+        ]);
+
+        /* infoContainer */
+        $infoContainer = FormContainer::create('info')
+            ->label('topiclist.general.info');
+        
+        /* tags */
+        /* $infoContainer->appendChild(
+            TagFormField::create('tags')
+                ->objectType('design.darkwood.community.topic')
+                ->available(MODULE_TAGGING)
+        ); */
+
+        /* labels */
+        $assignableLabelGroups = TopicCategory::getAccessibleLabelGroups();
+        if (\count($assignableLabelGroups)) {
+            $infoContainer->appendChildren(
+                LabelFormField::createFields('design.darkwood.community.topic', $assignableLabelGroups, 'labels')
+            );
+
+            $labelGroupsToCategories = [];
+            foreach (TopicCategoryLabelCacheBuilder::getInstance()->getData() as $categoryID => $labelGroupIDs) {
+                foreach ($labelGroupIDs as $labelGroupID) {
+                    if (!isset($labelGroupsToCategories[$labelGroupID])) {
+                        $labelGroupsToCategories[$labelGroupID] = [];
+                    }
+                    $labelGroupsToCategories[$labelGroupID][] = $categoryID;
+                }
+            }
+
+            foreach ($assignableLabelGroups as $labelGroup) {
+                if (isset($labelGroupsToCategories[$labelGroup->groupID])) {
+                    $labelField = $infoContainer->getNodeById('labels' . $labelGroup->groupID);
+                    $labelField->addDependency(
+                        ValueFormFieldDependency::create('labels' . $labelGroup->groupID)
+                            ->fieldId('categoryID')
+                            ->values($labelGroupsToCategories[$labelGroup->groupID])
+                    );
+                }
+            }
+        }
+        
+        /* wysiwygContainer */
+        $wysiwygContainer = WysiwygFormContainer::create('message')
+            ->label('community.topic.message')
+            ->required()
+            ->messageObjectType('design.darkwood.community.topic')
+            ->supportMentions(true);
+
+        $this->form->appendChildren([
+            $formContainer,
+            $infoContainer,
+            $wysiwygContainer
+        ]);
     }
 
     /**

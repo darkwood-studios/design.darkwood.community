@@ -2,6 +2,8 @@
 
 namespace community\data\category;
 
+use community\system\cache\builder\TopicCategoryLabelCacheBuilder;
+use wcf\system\label\LabelHandler;
 use community\system\cache\builder\LatestCommentsCacheBuilder;
 use wcf\data\category\AbstractDecoratedCategory;
 use wcf\data\IAccessibleObject;
@@ -11,12 +13,14 @@ use wcf\data\user\User;
 use wcf\system\category\CategoryHandler;
 use wcf\system\exception\SystemException;
 use wcf\system\request\LinkHandler;
+use wcf\system\user\object\watch\UserObjectWatchHandler;
+use wcf\system\user\storage\UserStorageHandler;
 use wcf\system\WCF;
 
 /**
  * Class TopicCategory
  *
- * @author         Daniel Hass
+ * @author         Daniel Hass, Julian Pfeil
  * @copyright      2022 Darkwood.Design
  * @license        Darkwood.Design License <https://darkwood.design/lizenz/>
  * @package        community\data\category
@@ -36,6 +40,11 @@ class TopicCategory extends AbstractDecoratedCategory implements IAccessibleObje
     public const OBJECT_TYPE_NAME = 'design.darkwood.community.topic.category';
 
     /**
+     * subscribed categories field name
+     */
+    public const USER_STORAGE_SUBSCRIBED_CATEGORIES = self::class . "\0subscribedCategories";
+
+    /**
      * ACL permissions of this category grouped by the id of the user they belong to
      *
      * @var        array
@@ -43,10 +52,15 @@ class TopicCategory extends AbstractDecoratedCategory implements IAccessibleObje
     protected $userPermissions = [];
 
     /**
-     *
+     * ids of subscribed todo categories
+     */
+    protected static $subscribedCategories;
+
+     /**
      * @var mixed
      */
     public $lastComments = null;
+
 
     /**
      * Returns a list with ids of accessible categories.
@@ -72,6 +86,83 @@ class TopicCategory extends AbstractDecoratedCategory implements IAccessibleObje
         }
 
         return $categoryIDs;
+    }
+
+    /**
+     * Returns subscribed category IDs.
+     */
+    public static function getSubscribedCategoryIDs()
+    {
+        if (self::$subscribedCategories === null) {
+            self::$subscribedCategories = [];
+
+            if (WCF::getUser()->userID) {
+                $data = UserStorageHandler::getInstance()->getField(self::USER_STORAGE_SUBSCRIBED_CATEGORIES);
+
+                // cache does not exist or is outdated
+                if ($data === null) {
+                    $objectTypeID = UserObjectWatchHandler::getInstance()->getObjectTypeID('design.darkwood.community.topic.category');
+
+                    $sql = "SELECT	objectID
+							FROM	wcf1_user_object_watch
+							WHERE	objectTypeID = ? AND userID = ?";
+                    $statement = WCF::getDB()->prepare($sql);
+                    $statement->execute([$objectTypeID, WCF::getUser()->userID]);
+                    self::$subscribedCategories = $statement->fetchAll(\PDO::FETCH_COLUMN);
+
+                    // update storage data
+                    UserStorageHandler::getInstance()->update(WCF::getUser()->userID, self::USER_STORAGE_SUBSCRIBED_CATEGORIES, \serialize(self::$subscribedCategories));
+                } else {
+                    self::$subscribedCategories = \unserialize($data);
+                }
+            }
+        }
+
+        return self::$subscribedCategories;
+    }
+
+    /**
+     * Returns true if the active user has subscribed to this category.
+     */
+    public function isSubscribed()
+    {
+        return \in_array($this->categoryID, self::getSubscribedCategoryIDs());
+    }
+        
+    /**
+     * Returns the label groups available for todos in the category.
+     */
+    public function getLabelGroups($permission = 'canViewLabel')
+    {
+        $labelGroups = [];
+
+        $labelGroupsToCategories = TopicCategoryLabelCacheBuilder::getInstance()->getData();
+        if (isset($labelGroupsToCategories[$this->categoryID])) {
+            $labelGroups = LabelHandler::getInstance()->getLabelGroups($labelGroupsToCategories[$this->categoryID], true, $permission);
+        }
+
+        return $labelGroups;
+    }
+
+    /**
+     * Returns the label groups for all accessible categories.
+     */
+    public static function getAccessibleLabelGroups($permission = 'canViewLabel')
+    {
+        $labelGroupsToCategories = TopicCategoryLabelCacheBuilder::getInstance()->getData();
+        $accessibleCategoryIDs = self::getAccessibleCategoryIDs();
+
+        $groupIDs = [];
+        foreach ($labelGroupsToCategories as $categoryID => $__groupIDs) {
+            if (\in_array($categoryID, $accessibleCategoryIDs)) {
+                $groupIDs = \array_merge($groupIDs, $__groupIDs);
+            }
+        }
+        if (empty($groupIDs)) {
+            return [];
+        }
+
+        return LabelHandler::getInstance()->getLabelGroups(\array_unique($groupIDs), true, $permission);
     }
 
     /**

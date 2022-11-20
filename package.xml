@@ -52,8 +52,10 @@
 		<instruction type="file"/>
 		<instruction type="file" application="wcf">files_wcf.tar</instruction>
 		<instruction type="template"/>
+		<instruction type="objectType" />
 		<instruction type="acpTemplate"/>
 		<instruction type="templateListener" />
+		<instruction type="database">acp/database/install_design.darkwood.community.php</instruction>
 		<instruction type="eventListener" />
 		<instruction type="language" />
 	</instructions>

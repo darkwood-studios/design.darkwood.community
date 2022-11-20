@@ -29,6 +29,28 @@
 			<definitionname>com.woltlab.wcf.message</definitionname>
 		</type>
 
+        <!-- embedded object handlers -->
+        <type>
+            <name>design.darkwood.community.topic</name>
+            <definitionname>com.woltlab.wcf.message.embeddedObject</definitionname>
+            <classname>community\system\message\embedded\object\TopicMessageEmbeddedObjectHandler</classname>
+        </type>
+        
+        <!-- search -->
+        <type>
+            <name>design.darkwood.community.topic</name>
+            <definitionname>com.woltlab.wcf.searchableObjectType</definitionname>
+            <classname>community\system\search\TopicSearch</classname>
+            <searchindex>community1_topic_search_index</searchindex>
+        </type>
+
+        <!-- object watch -->
+		<type>
+			<name>design.darkwood.community.topic.category</name>
+			<definitionname>com.woltlab.wcf.user.objectWatch</definitionname>
+			<classname>community\system\user\object\watch\TopicCategoryUserObjectWatch</classname>
+		</type>
+
         <!-- Like -->
 		<type>
 			<name>design.darkwood.community.likeableTopic</name>
@@ -109,5 +131,17 @@
 			<classname>community\system\user\notification\object\type\TopicCommentResponseUserNotificationObjectType</classname>
 			<category>design.darkwood.community</category>
 		</type>
+
+        <!-- Labels -->
+        <type>
+            <name>design.darkwood.community.topic</name>
+            <definitionname>com.woltlab.wcf.label.object</definitionname>
+            <classname>community\system\label\object\TopicLabelObjectHandler</classname>
+        </type>
+        <type>
+            <name>design.darkwood.community.topic.category</name>
+            <definitionname>com.woltlab.wcf.label.objectType</definitionname>
+            <classname>community\system\label\object\type\TopicCategoryLabelObjectTypeHandler</classname>
+        </type>
 	</import>
 </data>
