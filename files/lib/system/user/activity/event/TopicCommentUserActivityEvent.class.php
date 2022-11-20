@@ -62,8 +62,10 @@ class TopicCommentUserActivityEvent extends SingletonFactory implements IUserAct
                     $event->setIsAccessible();
 
                     // add title
-                    // todo eintrag in sprache auswerten
-                    $text = WCF::getLanguage()->getDynamicVariable('community.topic.recentActivity.topicComment', ['topic' => $topic]);
+                    $text = WCF::getLanguage()->getDynamicVariable('community.topic.recentActivity.topicComment', [
+                        'topic' => $topic,
+                        'commentID' => $comment->commentID,
+                    ]);
                     $event->setTitle($text);
 
                     // add text

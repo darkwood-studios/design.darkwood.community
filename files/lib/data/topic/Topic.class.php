@@ -28,6 +28,7 @@ use wcf\system\html\output\HtmlOutputProcessor;
  * @property int time
  * @property int cumulativeLikes
  * @property int comments
+ * @property int lastCommentID
  * @property int lastCommentTime
  * @property int lastCommentUserID
  * @property string lastCommentUsername
@@ -39,6 +40,7 @@ use wcf\system\html\output\HtmlOutputProcessor;
  * @property string message
  * @property string username
  * @property string responseIDs
+ * @property string languageID
  */
 class Topic extends DatabaseObject implements ITitledLinkObject
 {
@@ -141,7 +143,7 @@ class Topic extends DatabaseObject implements ITitledLinkObject
     /**
      * Returns the formatted message.
      */
-     public function getFormattedMessage(): string
+    public function getFormattedMessage(): string
     {
         $processor = new HtmlOutputProcessor();
         $processor->process($this->message, 'design.darkwood.community.topic', $this->topicID);
@@ -184,12 +186,13 @@ class Topic extends DatabaseObject implements ITitledLinkObject
 
         return $processor->getHtml();
     }
-	
-	/**
-	 * @inheritDoc
-	 */
-	public function getExcerpt() {
+
+    /**
+     * @inheritDoc
+     */
+    public function getExcerpt()
+    {
         $excerpt = StringUtil::truncate($this->getPlainMessage());
-		return $excerpt;
-	}
+        return $excerpt;
+    }
 }

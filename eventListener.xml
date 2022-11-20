@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/eventListener.xsd">
+	<import>
+		
+		<eventlistener name="communityTopicUpdateLastComment">
+			<eventclassname>wcf\data\comment\CommentAction</eventclassname>
+			<eventname>finalizeAction</eventname>
+			<listenerclassname>community\system\event\listener\TopicUpdateLastCommentListener</listenerclassname>
+		</eventlistener>
+
+	</import>
+</data>

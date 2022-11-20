@@ -1,33 +1,47 @@
 // communityCategoryList
 .communityCategoryList {
-    .communityCategory:not(:first-child) {
-        margin-top: 20px;
+  .communityCategory:not(:first-child) {
+    margin-top: 20px;
+  }
+  .communityCategory,
+  .communitySubCategory {
+    .communityCategoryTitle {
+      flex: 1 1 auto;
     }
+    .lastComment {
+      flex: 0 0 33%;
+    }
+  }
+  .communitySubCategory {
+    .lastComment {
+      margin-right: 6px;
+    }
+  }
 }
 
 // Topic(Add|Edit)Form messageContainer
 body#tpl_community_topicAdd {
-    #messageContainerContainer {
-        margin-top: 20px;
-        .sectionTitle {
-            border-bottom: none;
-            margin-bottom: 5px;
-            padding: 0;
-            font-weight: 400;
-            color: $wcfInputLabel;
-            @include wcfLineHeight;
-            @include wcfFontDefault;
-        }
-        #messageContainer {
-            margin-top: 0;
-        }
+  #messageContainerContainer {
+    margin-top: 20px;
+    .sectionTitle {
+      border-bottom: none;
+      margin-bottom: 5px;
+      padding: 0;
+      font-weight: 400;
+      color: $wcfInputLabel;
+      @include wcfLineHeight;
+      @include wcfFontDefault;
     }
+    #messageContainer {
+      margin-top: 0;
+    }
+  }
 }
 
 // Topic message
 body#tpl_community_topic {
-    .message {
-        border-bottom: 1px solid $wcfContentBorderInner;
-        padding-bottom: 10px;
-    }
+  .message {
+    border-bottom: 1px solid $wcfContentBorderInner;
+    padding-bottom: 10px;
+  }
 }

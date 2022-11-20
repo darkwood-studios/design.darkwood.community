@@ -2,6 +2,7 @@
 
 namespace community\system\user\activity\event;
 
+use community\data\topic\Topic;
 use community\data\topic\TopicList;
 use wcf\system\SingletonFactory;
 use wcf\system\user\activity\event\IUserActivityEvent;
@@ -38,6 +39,8 @@ class LikeableTopicUserActivityEvent extends SingletonFactory implements IUserAc
         foreach ($events as $event) {
             if (isset($entries[$event->objectID])) {
                 $topic = $entries[$event->objectID];
+
+                \assert($topic instanceof Topic);
 
                 // check permissions
                 if (!$topic->canRead()) {

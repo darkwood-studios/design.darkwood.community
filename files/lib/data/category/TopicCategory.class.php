@@ -4,6 +4,7 @@ namespace community\data\category;
 
 use community\system\cache\builder\TopicCategoryLabelCacheBuilder;
 use wcf\system\label\LabelHandler;
+use community\system\cache\builder\LatestCommentsCacheBuilder;
 use wcf\data\category\AbstractDecoratedCategory;
 use wcf\data\IAccessibleObject;
 use wcf\data\ITitledLinkObject;
@@ -54,6 +55,12 @@ class TopicCategory extends AbstractDecoratedCategory implements IAccessibleObje
      * ids of subscribed todo categories
      */
     protected static $subscribedCategories;
+
+     /**
+     * @var mixed
+     */
+    public $lastComments = null;
+
 
     /**
      * Returns a list with ids of accessible categories.
@@ -253,4 +260,19 @@ class TopicCategory extends AbstractDecoratedCategory implements IAccessibleObje
         return null;
     }
 
+    /**
+     *
+     * @return array
+     * @throws SystemException
+     */
+    public function getLastComment()
+    {
+        if ($this->lastComments === null) {
+            if (isset(LatestCommentsCacheBuilder::getInstance()->getData()[$this->categoryID])) {
+                $this->lastComments = LatestCommentsCacheBuilder::getInstance()->getData()[$this->categoryID];
+            }
+        }
+
+        return $this->lastComments;
+    }
 }

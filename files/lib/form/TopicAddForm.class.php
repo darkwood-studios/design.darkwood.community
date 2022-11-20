@@ -13,6 +13,7 @@ use wcf\system\request\LinkHandler;
 use wcf\system\request\IRouteController;
 use wcf\system\category\CategoryHandler;
 use wcf\system\exception\IllegalLinkException;
+use wcf\system\exception\PermissionDeniedException;
 use wcf\system\form\builder\field\TextFormField;
 use wcf\system\form\builder\field\HiddenFormField;
 use wcf\system\form\builder\container\FormContainer;
@@ -22,7 +23,6 @@ use wcf\system\form\builder\field\BooleanFormField;
 use wcf\system\form\builder\field\dependency\ValueFormFieldDependency;
 use wcf\system\form\builder\field\label\LabelFormField;
 use wcf\system\form\builder\field\tag\TagFormField;
-
 
 /**
  * Class TopicAddForm
@@ -50,7 +50,7 @@ class TopicAddForm extends AbstractFormBuilderForm
      */
     public $objectEditLinkController = TopicEditForm::class;
 
-   /**
+    /**
      * category id
      *
      * @var int
@@ -65,11 +65,11 @@ class TopicAddForm extends AbstractFormBuilderForm
     public $category;
 
     /**
-      * topic id
-      *
-      * @var int;
-      */
-     public $topicID;
+     * topic id
+     *
+     * @var int;
+     */
+    public $topicID;
 
     /**
      * @inheritDoc
@@ -84,7 +84,7 @@ class TopicAddForm extends AbstractFormBuilderForm
 
         $formContainer->appendChildren([
             TextFormField::create('subject')
-                ->label('design.darkwood.topic.subject')
+                ->label('community.topic.subject')
                 ->required()
                 ->autoFocus()
                 ->maximumLength(255),
@@ -135,7 +135,7 @@ class TopicAddForm extends AbstractFormBuilderForm
         
         /* wysiwygContainer */
         $wysiwygContainer = WysiwygFormContainer::create('message')
-            ->label('design.darkwood.topic.message')
+            ->label('community.topic.message')
             ->required()
             ->messageObjectType('design.darkwood.community.topic')
             ->supportMentions(true);

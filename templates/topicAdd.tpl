@@ -1,4 +1,4 @@
-{capture assign='contentTitle'}{lang}design.darkwood.topic.{$action}{/lang}{/capture}
+{capture assign='contentTitle'}{lang}community.topic.{$action}{/lang}{/capture}
 
 {include file='header'}
 

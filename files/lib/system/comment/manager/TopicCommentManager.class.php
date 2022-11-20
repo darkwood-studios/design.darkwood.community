@@ -9,6 +9,7 @@ use wcf\data\comment\CommentList;
 use wcf\data\comment\response\CommentResponseList;
 use wcf\data\object\type\ObjectTypeCache;
 use wcf\system\cache\runtime\UserProfileRuntimeCache;
+use wcf\system\comment\CommentHandler;
 use wcf\system\comment\manager\AbstractCommentManager;
 use wcf\system\exception\SystemException;
 use wcf\system\like\IViewableLikeProvider;
@@ -111,12 +112,11 @@ class TopicCommentManager extends AbstractCommentManager implements IViewableLik
     {
         $topic = new Topic($objectID);
         $editor = new TopicEditor($topic);
-        $editor->updateCounters([
-                                    'comments' => $value,
-                                ]);
-        $editor->update([
-                            'lastCommentTime' => TIME_NOW
-                        ]);
+        $editor->updateCounters(
+            [
+                'comments' => $value,
+            ]
+        );
     }
 
     /**
